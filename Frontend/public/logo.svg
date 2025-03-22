@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  
+  <!-- Bed icon with reduced height -->
+  <g fill="none" stroke="#848484" stroke-width="7">
+    <!-- Bed frame -->
+    <rect x="175" y="110" width="50" height="60" rx="3" />
+    
+    <!-- Top bunk -->
+    <line x1="175" y1="135" x2="225" y2="135" />
+    
+    <!-- Pillows -->
+    <rect x="180" y="115" width="15" height="8" rx="2" />
+    <rect x="180" y="140" width="15" height="8" rx="2" />
+    
+    <!-- Horizontal bars for mattresses -->
+    <line x1="175" y1="123" x2="225" y2="123" />
+    <line x1="175" y1="148" x2="225" y2="148" />
+    
+    <!-- Legs -->
+    <line x1="175" y1="170" x2="175" y2="180" />
+    <line x1="225" y1="170" x2="225" y2="180" />
+  </g>
+</svg>
