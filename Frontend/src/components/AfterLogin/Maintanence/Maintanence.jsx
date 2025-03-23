@@ -1,265 +1,156 @@
-import React, { useState, useEffect } from 'react';
-import './Maintenance.css';
+import React, { useState, useContext, useEffect } from "react";
+import "./Maintenance.css";
+import { StoreContext } from "../../../context/StoreContext";
 
 const Maintenance = () => {
-  const [issues, setIssues] = useState([]);
+  // Get room data from context
+  const { userRoomInfo } = useContext(StoreContext);
+
   const [newIssue, setNewIssue] = useState({
-    title: '',
-    description: '',
-    location: '',
-    priority: 'low',
-    reportedBy: '',
-    status: 'pending',
-    date: new Date().toISOString().substr(0, 10)
+    title: "",
+    description: "",
+    priority: "low",
+    reportedBy: "",
+    date: new Date().toISOString().substr(0, 10),
   });
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState("all");
 
   useEffect(() => {
-    // You could load saved issues from localStorage here
-    const savedIssues = localStorage.getItem('dormMaintenanceIssues');
-    if (savedIssues) {
-      setIssues(JSON.parse(savedIssues));
-    }
-  }, []);
 
-  useEffect(() => {
-    // Save issues to localStorage when they change
-    localStorage.setItem('dormMaintenanceIssues', JSON.stringify(issues));
-  }, [issues]);
+  }, [userRoomInfo])
+
+  if (!userRoomInfo) return <p>Loading room details...</p>;
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewIssue({
-      ...newIssue,
-      [name]: value
-    });
+    setNewIssue({ ...newIssue, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!newIssue.title || !newIssue.location || !newIssue.reportedBy) return;
-    
-    const issueWithId = {
-      ...newIssue,
-      id: Date.now(),
-      createdAt: new Date().toISOString()
-    };
-    
-    setIssues([...issues, issueWithId]);
-    setNewIssue({
-      title: '',
-      description: '',
-      location: '',
-      priority: 'low',
-      reportedBy: '',
-      status: 'pending',
-      date: new Date().toISOString().substr(0, 10)
-    });
+    if (!newIssue.title || !newIssue.reportedBy) return;
+
+    // Simulating API call to add maintenance issue
+    console.log("New Issue Submitted:", newIssue);
   };
 
-  const updateIssueStatus = (id, newStatus) => {
-    const updatedIssues = issues.map(issue => 
-      issue.id === id ? { ...issue, status: newStatus } : issue
-    );
-    setIssues(updatedIssues);
+  const handleStatusUpdate = (issueId, newStatus) => {
+    console.log(`Updating issue ${issueId} to status: ${newStatus}`);
   };
 
-  const deleteIssue = (id) => {
-    const updatedIssues = issues.filter(issue => issue.id !== id);
-    setIssues(updatedIssues);
-  };
-
-  const filteredIssues = filter === 'all' 
-    ? issues 
-    : issues.filter(issue => issue.status === filter);
-
-  const priorityColors = {
-    low: 'maintenance-priority-low',
-    medium: 'maintenance-priority-medium',
-    high: 'maintenance-priority-high',
-    urgent: 'maintenance-priority-urgent'
+  const handleDelete = (issueId) => {
+    console.log(`Deleting issue ${issueId}`);
   };
 
   const statusLabels = {
-    pending: 'Pending',
-    inProgress: 'In Progress',
-    completed: 'Completed',
-    canceled: 'Canceled'
+    pending: "Pending",
+    inProgress: "In Progress",
+    completed: "Completed",
+    canceled: "Canceled",
   };
+
+  const priorityColors = {
+    low: "priority-low",
+    medium: "priority-medium",
+    high: "priority-high",
+    urgent: "priority-urgent",
+  };
+
+  const filteredIssues =
+    filter === "all"
+      ? userRoomInfo.maintenances
+      : userRoomInfo.maintenances.filter((issue) => issue.status === filter);
 
   return (
     <div className="maintenance-container">
-      <h1 className="maintenance-title">Dorm Maintenance Tracker</h1>
-      
+      <h1 className="maintenance-title">Room Maintenance Tracker</h1>
+
+      {/* Room Details */}
+      <div className="maintenance-section room-details-section">
+        <h2 className="maintenance-section-title">Room Information</h2>
+        <div className="room-details-card">
+          <div className="room-header">
+            <h3 className="room-number">Room {userRoomInfo.roomNumber}</h3>
+            <span className={`room-badge ${userRoomInfo.isAvailable ? "room-available" : "room-occupied"}`}>
+              {userRoomInfo.isAvailable ? "Available" : "Occupied"}
+            </span>
+          </div>
+
+          <div className="room-details-grid">
+            <div className="room-detail-item">
+              <span className="detail-label">Building:</span>
+              <span className="detail-value">{userRoomInfo.building}</span>
+            </div>
+            <div className="room-detail-item">
+              <span className="detail-label">Floor:</span>
+              <span className="detail-value">{userRoomInfo.floor}</span>
+            </div>
+            <div className="room-detail-item">
+              <span className="detail-label">Capacity:</span>
+              <span className="detail-value">{userRoomInfo.capacity} persons</span>
+            </div>
+            <div className="room-detail-item">
+              <span className="detail-label">Rent:</span>
+              <span className="detail-value">${userRoomInfo.rent.toLocaleString()}</span>
+            </div>
+            <div className="room-detail-item full-width">
+              <span className="detail-label">Facilities:</span>
+              <div className="facilities-list">
+                {userRoomInfo.facilities.map((facility, index) => (
+                  <span key={index} className="facility-badge">{facility}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Report New Issue */}
       <div className="maintenance-section">
         <h2 className="maintenance-section-title">Report New Issue</h2>
         <form onSubmit={handleSubmit} className="maintenance-form">
-          <div className="maintenance-form-group">
-            <label className="maintenance-label">Issue Title:</label>
-            <input
-              type="text"
-              name="title"
-              value={newIssue.title}
-              onChange={handleInputChange}
-              placeholder="Brief description of the issue"
-              className="maintenance-input"
-              required
-            />
-          </div>
-
-          <div className="maintenance-form-group">
-            <label className="maintenance-label">Location:</label>
-            <input
-              type="text"
-              name="location"
-              value={newIssue.location}
-              onChange={handleInputChange}
-              placeholder="Where in the dorm is this issue? (e.g., bathroom, kitchen)"
-              className="maintenance-input"
-              required
-            />
-          </div>
-
-          <div className="maintenance-form-group">
-            <label className="maintenance-label">Detailed Description:</label>
-            <textarea
-              name="description"
-              value={newIssue.description}
-              onChange={handleInputChange}
-              placeholder="Provide details about the issue"
-              className="maintenance-textarea"
-              rows="3"
-            />
-          </div>
-
-          <div className="maintenance-form-row">
-            <div className="maintenance-form-group">
-              <label className="maintenance-label">Priority:</label>
-              <select
-                name="priority"
-                value={newIssue.priority}
-                onChange={handleInputChange}
-                className="maintenance-select"
-              >
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-                <option value="urgent">Urgent</option>
-              </select>
-            </div>
-
-            <div className="maintenance-form-group">
-              <label className="maintenance-label">Date Noticed:</label>
-              <input
-                type="date"
-                name="date"
-                value={newIssue.date}
-                onChange={handleInputChange}
-                className="maintenance-input"
-              />
-            </div>
-          </div>
-
-          <div className="maintenance-form-group">
-            <label className="maintenance-label">Reported By:</label>
-            <input
-              type="text"
-              name="reportedBy"
-              value={newIssue.reportedBy}
-              onChange={handleInputChange}
-              placeholder="Your name"
-              className="maintenance-input"
-              required
-            />
-          </div>
-
-          <button type="submit" className="maintenance-button">Submit Maintenance Request</button>
+          <input type="text" name="title" value={newIssue.title} onChange={handleInputChange} placeholder="Issue Title" required />
+          <textarea name="description" value={newIssue.description} onChange={handleInputChange} placeholder="Description" />
+          <select name="priority" value={newIssue.priority} onChange={handleInputChange}>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="urgent">Urgent</option>
+          </select>
+          <input type="date" name="date" value={newIssue.date} onChange={handleInputChange} />
+          <input type="text" name="reportedBy" value={newIssue.reportedBy} onChange={handleInputChange} placeholder="Your Name" required />
+          <button type="submit">Submit Request</button>
         </form>
       </div>
 
+      {/* Maintenance Issues */}
       <div className="maintenance-section">
-        <div className="maintenance-header">
-          <h2 className="maintenance-section-title">Maintenance Issues</h2>
-          <div className="maintenance-filter">
-            <label className="maintenance-filter-label">Filter by Status:</label>
-            <select 
-              value={filter} 
-              onChange={(e) => setFilter(e.target.value)}
-              className="maintenance-select"
-            >
-              <option value="all">All Issues</option>
-              <option value="pending">Pending</option>
-              <option value="inProgress">In Progress</option>
-              <option value="completed">Completed</option>
-              <option value="canceled">Canceled</option>
-            </select>
-          </div>
-        </div>
+        <h2 className="maintenance-section-title">Maintenance Issues</h2>
+        <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+          <option value="all">All Issues</option>
+          <option value="pending">Pending</option>
+          <option value="inProgress">In Progress</option>
+          <option value="completed">Completed</option>
+          <option value="canceled">Canceled</option>
+        </select>
 
         {filteredIssues.length > 0 ? (
-          <div className="maintenance-issues-list">
-            {filteredIssues.map(issue => (
-              <div key={issue.id} className="maintenance-issue-card">
-                <div className="maintenance-issue-header">
-                  <h3 className="maintenance-issue-title">{issue.title}</h3>
-                  <span className={`maintenance-badge ${priorityColors[issue.priority]}`}>
-                    {issue.priority.charAt(0).toUpperCase() + issue.priority.slice(1)}
-                  </span>
-                </div>
-                
-                <div className="maintenance-issue-details">
-                  <p className="maintenance-issue-location"><strong>Location:</strong> {issue.location}</p>
-                  <p className="maintenance-issue-description"><strong>Description:</strong> {issue.description || 'No description provided.'}</p>
-                  <p className="maintenance-issue-info"><strong>Reported By:</strong> {issue.reportedBy}</p>
-                  <p className="maintenance-issue-info"><strong>Date Reported:</strong> {new Date(issue.date).toLocaleDateString()}</p>
-                  <p className="maintenance-issue-status">
-                    <strong>Status:</strong> 
-                    <span className={`maintenance-status-badge maintenance-status-${issue.status}`}>
-                      {statusLabels[issue.status]}
-                    </span>
-                  </p>
-                </div>
-                
-                <div className="maintenance-issue-actions">
-                  {issue.status === 'pending' && (
-                    <button 
-                      onClick={() => updateIssueStatus(issue.id, 'inProgress')}
-                      className="maintenance-action-button maintenance-action-start"
-                    >
-                      Mark In Progress
-                    </button>
-                  )}
-                  
-                  {issue.status === 'inProgress' && (
-                    <button 
-                      onClick={() => updateIssueStatus(issue.id, 'completed')}
-                      className="maintenance-action-button maintenance-action-complete"
-                    >
-                      Mark Completed
-                    </button>
-                  )}
-                  
-                  {(issue.status === 'pending' || issue.status === 'inProgress') && (
-                    <button 
-                      onClick={() => updateIssueStatus(issue.id, 'canceled')}
-                      className="maintenance-action-button maintenance-action-cancel"
-                    >
-                      Cancel Request
-                    </button>
-                  )}
-                  
-                  <button 
-                    onClick={() => deleteIssue(issue.id)}
-                    className="maintenance-action-button maintenance-action-delete"
-                  >
-                    Delete
-                  </button>
-                </div>
+          filteredIssues.map((issue) => (
+            <div key={issue._id} className="maintenance-issue-card">
+              <h3>{issue.issue}</h3>
+              <p><strong>Reported By:</strong> {issue.reportedBy}</p>
+              <p><strong>Date:</strong> {new Date(issue.dateSubmitted).toLocaleDateString()}</p>
+              <p><strong>Status:</strong> {statusLabels[issue.status]}</p>
+
+              <div className="maintenance-issue-actions">
+                {issue.status === "pending" && <button onClick={() => handleStatusUpdate(issue._id, "inProgress")}>Mark In Progress</button>}
+                {issue.status === "inProgress" && <button onClick={() => handleStatusUpdate(issue._id, "completed")}>Mark Completed</button>}
+                {(issue.status === "pending" || issue.status === "inProgress") && <button onClick={() => handleStatusUpdate(issue._id, "canceled")}>Cancel</button>}
+                <button onClick={() => handleDelete(issue._id)}>Delete</button>
               </div>
-            ))}
-          </div>
+            </div>
+          ))
         ) : (
-          <p className="maintenance-empty-message">No maintenance issues {filter !== 'all' ? `with status "${statusLabels[filter]}"` : ''} found.</p>
+          <p>No maintenance issues found.</p>
         )}
       </div>
     </div>

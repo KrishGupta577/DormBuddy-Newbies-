@@ -55,6 +55,7 @@ const dormRoomSchema = new mongoose.Schema(
         description: { type: String, required: true },
         createdAt: { type: Date, default: Date.now },
         addedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        priority: { type: String },
         status: { type: String, enum: ["pending", "in-progress", "completed"], default: "pending" }
       }
     ],

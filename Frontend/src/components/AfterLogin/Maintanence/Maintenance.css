@@ -1,263 +1,254 @@
-/* setting-styles.css */
-
+/* Main container styling */
 .maintenance-container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
-  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
 }
 
 .maintenance-title {
   text-align: center;
-  color: var(--text-color);
+  color: #2c3e50;
   margin-bottom: 30px;
-  font-size: 28px;
+  font-size: 2.2rem;
 }
 
+/* Section styling */
 .maintenance-section {
-  background-color: var(--bg-color);
+  background-color: #fff;
   border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 25px;
-  box-shadow: var(--box-shadow);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin-bottom: 30px;
 }
 
 .maintenance-section-title {
-  color: var(--button-color);
-  border-bottom: 2px solid var(--button-color);
+  color: #3498db;
+  border-bottom: 2px solid #eee;
   padding-bottom: 10px;
   margin-top: 0;
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 1.5rem;
 }
 
-.maintenance-header {
+/* Room details styling */
+.room-details-card {
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.room-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   margin-bottom: 15px;
 }
 
-.maintenance-filter {
+.room-number {
+  font-size: 1.3rem;
+  margin: 0;
+  color: #2c3e50;
+}
+
+.room-badge {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.room-available {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.room-occupied {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.room-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.room-detail-item {
   display: flex;
-  align-items: center;
-  margin-top: 10px;
+  flex-direction: column;
 }
 
-.maintenance-filter-label {
-  margin-right: 10px;
-  font-weight: bold;
+.full-width {
+  grid-column: span 2;
 }
 
+.detail-label {
+  font-weight: 600;
+  color: #7f8c8d;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  font-size: 1.1rem;
+}
+
+.facilities-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.facility-badge {
+  background-color: #f1f1f1;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+}
+
+/* Form styling */
 .maintenance-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.maintenance-form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.maintenance-form-row {
-  display: flex;
-  gap: 15px;
-}
-
-.maintenance-form-row .maintenance-form-group {
-  flex: 1;
-}
-
-.maintenance-label {
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.maintenance-input,
-.maintenance-select,
-.maintenance-textarea {
-  padding: 10px;
-  border: 1px solid var(--border-color);
+.maintenance-form input,
+.maintenance-form textarea,
+.maintenance-form select {
+  padding: 12px;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 14px;
-  background-color: var(--secondary-bg-color);
-  color: var(--text-color);
+  font-size: 1rem;
+  font-family: inherit;
 }
 
-.maintenance-textarea {
+.maintenance-form textarea {
+  min-height: 100px;
   resize: vertical;
-  min-height: 80px;
 }
 
-.maintenance-button {
-  background-color: var(--button-color);
-  color: var(--secondary-bg-color);
+.maintenance-form button {
+  background-color: #3498db;
+  color: white;
   border: none;
   border-radius: 4px;
-  padding: 12px 15px;
-  font-size: 16px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
-  font-weight: bold;
+  transition: background-color 0.2s;
 }
 
-.maintenance-button:hover {
-  background-color: var(--hover-button-color);
+.maintenance-form button:hover {
+  background-color: #2980b9;
 }
 
-.maintenance-issues-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+/* Maintenance issues styling */
+.maintenance-section select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  width: 200px;
+  font-size: 0.9rem;
 }
 
 .maintenance-issue-card {
-  background-color: var(--secondary-bg-color);
+  background-color: #f8f9fa;
   border-radius: 6px;
-  padding: 15px;
-  box-shadow: var(--box-shadow);
-  border-left: 4px solid var(--button-color);
-}
-
-.maintenance-issue-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.maintenance-issue-title {
-  margin: 0;
-  font-size: 18px;
-  color: var(--text-color);
-}
-
-.maintenance-badge {
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: bold;
-  color: var(--secondary-bg-color);
-}
-
-.maintenance-priority-low {
-  background-color: #2ecc71;
-}
-
-.maintenance-priority-medium {
-  background-color: #f39c12;
-}
-
-.maintenance-priority-high {
-  background-color: #e74c3c;
-}
-
-.maintenance-priority-urgent {
-  background-color: #c0392b;
-}
-
-.maintenance-issue-details {
+  padding: 20px;
   margin-bottom: 15px;
+  border-left: 4px solid #3498db;
 }
 
-.maintenance-issue-location,
-.maintenance-issue-description,
-.maintenance-issue-info,
-.maintenance-issue-status {
-  margin: 5px 0;
-  font-size: 14px;
+.maintenance-issue-card h3 {
+  margin-top: 0;
+  color: #2c3e50;
 }
 
-.maintenance-status-badge {
-  display: inline-block;
-  padding: 3px 8px;
-  margin-left: 5px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: bold;
-  color: var(--secondary-bg-color);
-}
-
-.maintenance-status-pending {
-  background-color: #f39c12;
-}
-
-.maintenance-status-inProgress {
-  background-color: var(--button-color);
-}
-
-.maintenance-status-completed {
-  background-color: #2ecc71;
-}
-
-.maintenance-status-canceled {
-  background-color: #95a5a6;
+.maintenance-issue-card p {
+  margin: 8px 0;
 }
 
 .maintenance-issue-actions {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
 }
 
-.maintenance-action-button {
-  padding: 6px 12px;
+.maintenance-issue-actions button {
+  padding: 8px 12px;
   border: none;
   border-radius: 4px;
-  font-size: 13px;
   cursor: pointer;
-  font-weight: bold;
-  transition: opacity 0.2s;
-  color: var(--secondary-bg-color);
+  font-size: 0.9rem;
+  transition: all 0.2s;
 }
 
-.maintenance-action-button:hover {
-  opacity: 0.85;
+.maintenance-issue-actions button:nth-child(1) {
+  background-color: #3498db;
+  color: white;
 }
 
-.maintenance-action-start {
-  background-color: var(--button-color);
+.maintenance-issue-actions button:nth-child(1):hover {
+  background-color: #2980b9;
 }
 
-.maintenance-action-complete {
+.maintenance-issue-actions button:nth-child(2) {
   background-color: #2ecc71;
+  color: white;
 }
 
-.maintenance-action-cancel {
-  background-color: #95a5a6;
+.maintenance-issue-actions button:nth-child(2):hover {
+  background-color: #27ae60;
 }
 
-.maintenance-action-delete {
+.maintenance-issue-actions button:nth-child(3) {
   background-color: #e74c3c;
+  color: white;
 }
 
-.maintenance-empty-message {
-  text-align: center;
-  color: var(--secondary-text-color);
-  font-style: italic;
-  padding: 20px 0;
+.maintenance-issue-actions button:nth-child(3):hover {
+  background-color: #c0392b;
+}
+
+/* Priority colors */
+.priority-low {
+  border-left-color: #3498db;
+}
+
+.priority-medium {
+  border-left-color: #f39c12;
+}
+
+.priority-high {
+  border-left-color: #e67e22;
+}
+
+.priority-urgent {
+  border-left-color: #e74c3c;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .maintenance-header {
-    flex-direction: column;
-    align-items: flex-start;
+  .room-details-grid {
+    grid-template-columns: 1fr;
   }
-
-  .maintenance-form-row {
-    flex-direction: column;
+  
+  .full-width {
+    grid-column: span 1;
   }
-
-  .maintenance-issue-header {
+  
+  .maintenance-issue-actions {
     flex-direction: column;
-    align-items: flex-start;
+    gap: 8px;
   }
-
-  .maintenance-badge {
-    margin-top: 5px;
+  
+  .maintenance-issue-actions button {
+    width: 100%;
   }
 }

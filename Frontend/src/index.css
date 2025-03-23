@@ -1,5 +1,4 @@
 :root {
-  /* Background Colors */
   --bg-color: #F9FAFB;
   --secondary-bg-color: #FFFFFF;
 
@@ -7,9 +6,9 @@
   --text-color: #333333;
   --secondary-text-color: #666666;
 
-  /* Button Colors */
-  --button-color: #007BFF; 
-  --hover-button-color: #0056b3; 
+  /* Accent Colors (Purple Theme) */
+  --primary-color: #8E44AD; 
+  --hover-primary-color: #732D91; 
 
   /* Border & Box Shadow */
   --border-color: #E0E0E0;

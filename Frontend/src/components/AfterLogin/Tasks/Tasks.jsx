@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const Tasks = () => {
   const { userRoomInfo, userInfo, url, token } = useContext(StoreContext);
+  const [tasks, setTasks] = useState([]);  // Manage tasks locally
   const [filter, setFilter] = useState('all');
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -18,23 +19,31 @@ const Tasks = () => {
     }
   });
 
+  // Fetch tasks when component mounts
+  useEffect(() => {
+    if (userRoomInfo?.tasks) {
+      setTasks(userRoomInfo.tasks);
+    }
+  }, [userRoomInfo]);
+
+  // Submit form and add task
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post(url + '/dormRoom/add-task', {
-        
+      const response = await axios.post(`${url}/dormRoom/add-task`, {
         dormId: userInfo.dormId,
-        task: data  
-      }, { headers: { token } })
-      console.log(response.data)
+        task: data
+      }, { headers: { token } });
+
+      setTasks([...tasks, response.data.task]); // Update UI instantly
+      reset();
+    } catch (error) {
+      console.error("Error adding task:", error);
     }
-    catch (error) {
-      console.log(error)
-    }
-  }
+  };
 
   const filteredTasks = filter === 'all'
-    ? userInfo.tasks || []
-    : userInfo.tasks.filter(task => task.status.toLowerCase() === filter);
+    ? tasks
+    : tasks.filter(task => task.status.toLowerCase() === filter);
 
   return (
     <div className="tasks-container">
@@ -63,7 +72,7 @@ const Tasks = () => {
             <p className="tasks-no-tasks-message">No tasks found.</p>
           ) : (
             filteredTasks.map(task => (
-              <div key={task.id} className={`tasks-task-card tasks-priority-${task.priority.toLowerCase()}`}>
+              <div key={task._id} className={`tasks-task-card tasks-priority-${task.priority}`}>
                 <div className="tasks-task-header">
                   <h3>{task.title}</h3>
                   <div className={`tasks-status-badge tasks-status-${task.status.toLowerCase().replace(' ', '-')}`}>
@@ -71,29 +80,12 @@ const Tasks = () => {
                   </div>
                 </div>
                 <div className="tasks-task-details">
-                  <p><span>Assigned to:</span> {task.assignedTo}</p>
-                  <p><span>Due:</span> {new Date(task.dueDate).toLocaleDateString()}</p>
+                  <p><span>Assigned to:</span> {task.addedBy}</p>
+                  <p><span>Due:</span> {new Date(new Date(task.createdAt).getTime() + 2 * 24 * 60 * 60 * 1000).toLocaleDateString()}</p>
                   <p><span>Priority:</span> {task.priority}</p>
                   {task.recurring && <p className="tasks-recurring-tag">Recurring</p>}
                 </div>
                 <p className="tasks-task-description">{task.description}</p>
-                <div className="tasks-task-actions">
-                  {task.status !== 'Completed' && (
-                    <button className="tasks-complete-button" onClick={() => handleStatusChange(task.id, 'Completed')}>
-                      Mark Complete
-                    </button>
-                  )}
-                  {task.status === 'Pending' && (
-                    <button className="tasks-progress-button" onClick={() => handleStatusChange(task.id, 'In Progress')}>
-                      Start Task
-                    </button>
-                  )}
-                  {task.status === 'Completed' && (
-                    <button className="tasks-reopen-button" onClick={() => handleStatusChange(task.id, 'Pending')}>
-                      Reopen
-                    </button>
-                  )}
-                </div>
               </div>
             ))
           )}

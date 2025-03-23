@@ -16,7 +16,6 @@ import { StoreContext } from '../../context/StoreContext';
 import Tasks from '../../components/AfterLogin/Tasks/Tasks';
 import Expense from '../../components/AfterLogin/Expense/Expense';
 import Maintanence from '../../components/AfterLogin/Maintanence/Maintanence';
-import Roommates from '../../components/AfterLogin/Roommates/Roommates';
 import Setting from '../../components/AfterLogin/Setting/Setting';
 import Overview from '../../components/AfterLogin/Overview/Overview';
 
@@ -29,7 +28,6 @@ const Dashboard = () => {
         { name: 'Tasks', path: '/dashboard/tasks', icon: <ArrowRightLeft className="dashboard-menu-icon" /> },
         { name: 'Expenses', path: '/dashboard/expense', icon: <ChartIcon className="dashboard-menu-icon" /> },
         { name: 'Maintenance', path: '/dashboard/maintanence', icon: <FileText className="dashboard-menu-icon" /> },
-        { name: 'Roommates', path: '/dashboard/roommates', icon: <Smartphone className="dashboard-menu-icon" /> },
         { name: 'Settings', path: '/dashboard/settings', icon: <Settings className="dashboard-menu-icon" /> },
     ];
 
@@ -79,7 +77,7 @@ const Dashboard = () => {
                         </button>
                         <div className="dashboard-profile-info">
                             <img
-                                src='/profile-photo'
+                                src='/profile_photo.png'
                                 alt="Profile"
                                 className="dashboard-profile-image"
                                 referrerPolicy="no-referrer"
@@ -98,7 +96,6 @@ const Dashboard = () => {
                         <Route path="tasks" element={<Tasks />} />
                         <Route path="expense" element={<Expense />} />
                         <Route path="maintanence" element={<Maintanence />} />
-                        <Route path="roommates" element={<Roommates />} />
                         <Route path="settings" element={<Setting />} />
                     </Routes>
                 </div>

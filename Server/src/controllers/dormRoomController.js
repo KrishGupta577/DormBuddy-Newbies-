@@ -77,34 +77,36 @@ const addRoommate = async (req, res) => {
 
 const addTask = async (req, res) => {
     try {
-      const { dormId, userId, task } = req.body;
-  
-      if (!dormId || !userId || !description) {
-        return res.status(400).json({ message: "Missing required fields" });
-      }
-  
-      // Find the room
-      const room = await dormRoomModel.findById(dormId);
-      if (!room) return res.status(404).json({ message: "Room not found" });
-  
-      // Create the new task
-      const newTask = {
-        description : task.description,
-        createdAt: new Date(),
-        addedBy: userId,
-        status: "pending",
-      };
-  
-      // Add the task to the room's tasks array
-      room.tasks.push(newTask);
-      await room.save();
-  
-      res.status(201).json({ message: "Task added successfully", task: newTask });
+        const { dormId, userId, task } = req.body;
+        const { description,priority } = task
+
+        if (!dormId || !userId || !description) {
+            return res.status(400).json({ message: "Missing required fields" });
+        }
+
+        // Find the room
+        const room = await dormRoomModel.findById(dormId);
+        if (!room) return res.status(404).json({ message: "Room not found" });
+
+        // Create the new task
+        const newTask = {
+            description: task.description,
+            createdAt: new Date(),
+            addedBy: userId,
+            status: "pending",
+            priority
+        };
+
+        // Add the task to the room's tasks array
+        room.tasks.push(newTask);
+        await room.save();
+
+        res.status(201).json({ message: "Task added successfully", task: newTask });
     } catch (error) {
-      console.error("Error adding task:", error);
-      res.status(500).json({ message: "Error saving task", error: error.message });
+        console.error("Error adding task:", error);
+        res.status(500).json({ message: "Error saving task", error: error.message });
     }
-  };
+};
 
 
 export { addDormRoom, deleteDormRoom, changeDormRoomInformation, findUserRoom, addRoommate, addTask }

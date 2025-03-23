@@ -1,151 +1,95 @@
 import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements, useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-import axios from "axios";
-import "./StripeGateway.css"; // We'll create this CSS file next
+import { Elements, PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import "./stripeGateway.css"; // Import the CSS file
 
-// Replace with your actual publishable key from Stripe Dashboard
-const stripePromise = loadStripe("your_publishable_key");
+const stripePromise = loadStripe("pk_test_51R5TNCR6XzBxnHc8Bcijq7jeySKZ1wiynXdmfwvu5g4x8d08a1pFToCdaB4ihaNaCf87zyBFggrFrIgN0TFokyS500rR2gDhRG");
 
-// Custom styling for the CardElement
-const CARD_ELEMENT_OPTIONS = {
-  style: {
-    base: {
-      color: "#32325d",
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-      fontSmoothing: "antialiased",
-      fontSize: "16px",
-      "::placeholder": {
-        color: "#aab7c4"
-      }
-    },
-    invalid: {
-      color: "#fa755a",
-      iconColor: "#fa755a"
-    }
-  }
-};
-
-const CheckoutForm = ({ amount = 5000, onSuccess }) => {
+const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
-  const [cardComplete, setCardComplete] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    if (!stripe || !elements || !cardComplete) return;
+    if (!stripe || !elements) return;
 
-    setLoading(true);
-    setError(null);
+    setIsProcessing(true);
+    const { error } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: "https://example.com/success",
+      },
+    });
 
-    try {
-      // Create a payment intent on your server
-      const { data } = await axios.post("/api/create-payment-intent", {
-        amount, // amount in smallest currency unit (cents/paise)
-      });
-
-      const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(
-        data.clientSecret,
-        {
-          payment_method: {
-            card: elements.getElement(CardElement),
-          },
-        }
-      );
-
-      if (confirmError) {
-        setError(confirmError.message);
-      } else if (paymentIntent.status === "succeeded") {
-        setSuccess(true);
-        if (onSuccess) onSuccess(paymentIntent);
-      }
-    } catch (err) {
-      console.error("Payment error:", err);
-      setError("Payment failed. Please try again.");
+    if (error) {
+      setErrorMessage(error.message);
+    } else {
+      alert("Payment Successful (Demo Mode)");
     }
-
-    setLoading(false);
-  };
-
-  const handleCardChange = (event) => {
-    setCardComplete(event.complete);
-    setError(event.error ? event.error.message : "");
+    setIsProcessing(false);
   };
 
   return (
-    <div className="stripe-payment-container">
-      {!success ? (
-        <form onSubmit={handleSubmit} className="stripe-payment-form">
-          <div className="form-header">
-            <h3>Complete Your Payment</h3>
-            <div className="secure-badge">
-              <span className="lock-icon">🔒</span>
-              <span>Secure Payment</span>
-            </div>
-          </div>
-          
-          <div className="payment-amount">
-            <span>Payment Amount:</span>
-            <span className="amount-value">₹{(amount / 100).toFixed(2)}</span>
-          </div>
-          
-          <div className="card-element-container">
-            <label>Card Details</label>
-            <CardElement 
-              options={CARD_ELEMENT_OPTIONS} 
-              onChange={handleCardChange}
-              className="card-element"
-            />
-          </div>
-          
-          {error && <div className="error-message">{error}</div>}
-          
-          <button 
-            type="submit" 
-            className={`payment-button ${loading ? 'loading' : ''}`}
-            disabled={!stripe || loading || !cardComplete}
-          >
-            {loading ? (
-              <>
-                <div className="spinner"></div>
-                <span>Processing...</span>
-              </>
-            ) : (
-              "Pay Now"
-            )}
-          </button>
-          
-          <div className="payment-info">
-            <div className="card-icons">
-              <span className="card-icon">💳</span>
-              <span>We accept all major credit cards</span>
-            </div>
-          </div>
-        </form>
-      ) : (
-        <div className="payment-success">
-          <div className="success-icon">✓</div>
-          <h3>Payment Successful!</h3>
-          <p>Thank you for your payment. Your transaction has been completed.</p>
-          <p className="transaction-id">Transaction ID: {Math.random().toString(36).substring(2, 10).toUpperCase()}</p>
+    <form onSubmit={handleSubmit} className="checkout-form">
+      <h2 className="checkout-title">Checkout</h2>
+
+      <div className="payment-element-container">
+        <PaymentElement />
+      </div>
+
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+      <button
+        type="submit"
+        disabled={!stripe || !elements || isProcessing}
+        className="pay-button"
+      >
+        {isProcessing ? (
+          <span className="processing-indicator">
+            <svg className="spinner" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="spinner-circle" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="spinner-path" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Processing...
+          </span>
+        ) : (
+          "Pay Now"
+        )}
+      </button>
+    </form>
+  );
+};
+
+const StripeGateway = () => {
+  const options = {
+    mode: "payment",
+    amount: 1099, // $10.99
+    currency: "usd",
+  };
+
+  return (
+    <div className="stripe-gateway-container">
+      <div className="payment-header">
+        <h1 className="payment-heading">Complete Your Purchase</h1>
+        <p className="payment-subheading">Secure payment powered by Stripe</p>
+        <div className="payment-total">
+          <span className="total-badge">Total: $10.99</span>
         </div>
-      )}
-    </div>
-  );
-};
-
-const StripePayment = ({ amount, onSuccess }) => {
-  return (
-    <div className="stripe-wrapper">
-      <Elements stripe={stripePromise}>
-        <CheckoutForm amount={amount} onSuccess={onSuccess} />
+      </div>
+      
+      <Elements stripe={stripePromise} options={options}>
+        <CheckoutForm />
       </Elements>
+      
+      <div className="payment-footer">
+        <div className="security-badge">
+          <span className="lock-icon">🔒</span> Secure Checkout
+        </div>
+      </div>
     </div>
   );
 };
 
-export default StripePayment;
+export default StripeGateway;
