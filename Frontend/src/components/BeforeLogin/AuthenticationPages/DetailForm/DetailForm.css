@@ -1,0 +1,194 @@
+/* DetailForm.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.detail-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+.detail-form-container h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-weight: 600;
+  font-size: 28px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.detail-form-container h1::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.detail-form-section {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px 25px;
+  margin-bottom: 25px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.detail-form-section:hover {
+  transform: translateY(-5px);
+}
+
+.detail-form-section h2 {
+  color: #3a4e7a;
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e0e0e0;
+  position: relative;
+}
+
+.detail-form-section h2::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+}
+
+.detail-form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.detail-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.detail-form-group input[type="text"],
+.detail-form-group input[type="email"],
+.detail-form-group input[type="number"],
+.detail-form-group select {
+  width: 95%;
+  padding: 12px 15px;
+  border: 1px solid #dcdfe6;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: all 0.3s;
+  background-color: #f9fafb;
+  color: #2d3748;
+}
+
+.detail-form-group input[type="text"]:focus,
+.detail-form-group input[type="email"]:focus,
+.detail-form-group input[type="number"]:focus,
+.detail-form-group select:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+  outline: none;
+}
+
+.detail-form-group input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+  accent-color: #6a11cb;
+}
+
+.detail-form-error {
+  border-color: #e53e3e !important;
+  background-color: #fff5f5 !important;
+}
+
+.detail-form-error-message {
+  color: #e53e3e;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+.detail-form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.detail-form-submit-btn, 
+.detail-form-reset-btn {
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.detail-form-submit-btn {
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(106, 17, 203, 0.4);
+}
+
+.detail-form-reset-btn {
+  background: transparent;
+  color: #4a5568;
+  border: 2px solid #dcdfe6;
+}
+
+.detail-form-submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(106, 17, 203, 0.5);
+}
+
+.detail-form-reset-btn:hover {
+  background-color: #f8f9fa;
+  border-color: #c0c4cc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .detail-form-container {
+    padding: 15px;
+  }
+  
+  .detail-form-section {
+    padding: 15px;
+  }
+  
+  .detail-form-actions {
+    flex-direction: column;
+  }
+  
+  .detail-form-submit-btn, 
+  .detail-form-reset-btn {
+    width: 100%;
+  }
+}
+
+/* Animation for form sections */
+@keyframes detail-form-fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.detail-form-section {
+  animation: detail-form-fadeIn 0.5s ease forwards;
+}
+
+.detail-form-section:nth-child(1) { animation-delay: 0.1s; }
+.detail-form-section:nth-child(2) { animation-delay: 0.2s; }
+.detail-form-section:nth-child(3) { animation-delay: 0.3s; }
+.detail-form-section:nth-child(4) { animation-delay: 0.4s; }

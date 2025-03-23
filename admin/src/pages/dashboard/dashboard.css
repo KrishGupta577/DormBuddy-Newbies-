@@ -1,0 +1,153 @@
+/* DormBuddy Dashboard Theme */
+:root {
+    --primary-color: #4A90E2; /* Soft Blue */
+    --secondary-color: #A3B8E8; /* Light Blue */
+    --bg-color: #F8FAFF; /* Light Mist White */
+    --secondary-bg-color: #EAF0FF; /* Soft Pastel Blue */
+    --text-color: #2A2E35; /* Dark Gray */
+    --secondary-text-color: #5C6370; /* Muted Gray */
+    --button-color: #4A90E2; /* Soft Blue */
+    --button-hover-color: #A3B8E8; /* Light Blue */
+    --box-shadow-color: rgba(74, 144, 226, 0.2); /* Soft Blue Glow */
+    --border-color: #7A8FC9; /* Subtle Blue Border */
+    --error-color: #D9534F; /* Muted Red */
+    --error-bg-color: rgba(217, 83, 79, 0.15); /* Light Red Tint */
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+  }
+  
+  .app-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 180px;
+    background-color: var(--secondary-color);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 2px 0 10px var(--box-shadow-color);
+    transition: all 0.3s ease-in-out;
+
+  }
+  
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.0rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .menu-item .menu-icon {
+    min-width: 24px;
+  }
+  
+  .menu-item:hover,
+  .menu-item.active {
+    background-color: var(--button-hover-color);
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: var(--secondary-bg-color);
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease-in-out;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--box-shadow-color);
+  }
+  
+  .header-title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .notification-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    font-size: 1.5rem;
+    color: var(--text-color);
+  }
+  
+  .notification-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: var(--error-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  /* Profile Info */
+  .profile-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--box-shadow-color);
+  }
+  
+  .profile-image {
+    width: 60px;
+    height: 55px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+  }
+  
+  .profile-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--secondary-text-color);
+  }
+  

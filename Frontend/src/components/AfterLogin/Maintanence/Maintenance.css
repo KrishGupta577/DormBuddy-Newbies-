@@ -1,0 +1,263 @@
+/* setting-styles.css */
+
+.maintenance-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+}
+
+.maintenance-title {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.maintenance-section {
+  background-color: var(--bg-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: var(--box-shadow);
+}
+
+.maintenance-section-title {
+  color: var(--button-color);
+  border-bottom: 2px solid var(--button-color);
+  padding-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.maintenance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.maintenance-filter {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.maintenance-filter-label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.maintenance-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.maintenance-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.maintenance-form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.maintenance-form-row .maintenance-form-group {
+  flex: 1;
+}
+
+.maintenance-label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.maintenance-input,
+.maintenance-select,
+.maintenance-textarea {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+}
+
+.maintenance-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.maintenance-button {
+  background-color: var(--button-color);
+  color: var(--secondary-bg-color);
+  border: none;
+  border-radius: 4px;
+  padding: 12px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: bold;
+}
+
+.maintenance-button:hover {
+  background-color: var(--hover-button-color);
+}
+
+.maintenance-issues-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.maintenance-issue-card {
+  background-color: var(--secondary-bg-color);
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: var(--box-shadow);
+  border-left: 4px solid var(--button-color);
+}
+
+.maintenance-issue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.maintenance-issue-title {
+  margin: 0;
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.maintenance-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--secondary-bg-color);
+}
+
+.maintenance-priority-low {
+  background-color: #2ecc71;
+}
+
+.maintenance-priority-medium {
+  background-color: #f39c12;
+}
+
+.maintenance-priority-high {
+  background-color: #e74c3c;
+}
+
+.maintenance-priority-urgent {
+  background-color: #c0392b;
+}
+
+.maintenance-issue-details {
+  margin-bottom: 15px;
+}
+
+.maintenance-issue-location,
+.maintenance-issue-description,
+.maintenance-issue-info,
+.maintenance-issue-status {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.maintenance-status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  margin-left: 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--secondary-bg-color);
+}
+
+.maintenance-status-pending {
+  background-color: #f39c12;
+}
+
+.maintenance-status-inProgress {
+  background-color: var(--button-color);
+}
+
+.maintenance-status-completed {
+  background-color: #2ecc71;
+}
+
+.maintenance-status-canceled {
+  background-color: #95a5a6;
+}
+
+.maintenance-issue-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.maintenance-action-button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: opacity 0.2s;
+  color: var(--secondary-bg-color);
+}
+
+.maintenance-action-button:hover {
+  opacity: 0.85;
+}
+
+.maintenance-action-start {
+  background-color: var(--button-color);
+}
+
+.maintenance-action-complete {
+  background-color: #2ecc71;
+}
+
+.maintenance-action-cancel {
+  background-color: #95a5a6;
+}
+
+.maintenance-action-delete {
+  background-color: #e74c3c;
+}
+
+.maintenance-empty-message {
+  text-align: center;
+  color: var(--secondary-text-color);
+  font-style: italic;
+  padding: 20px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .maintenance-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .maintenance-form-row {
+    flex-direction: column;
+  }
+
+  .maintenance-issue-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .maintenance-badge {
+    margin-top: 5px;
+  }
+}

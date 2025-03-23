@@ -1,0 +1,222 @@
+/* StripePayment.css */
+.stripe-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stripe-payment-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    width: 100%;
+    max-width: 450px;
+    margin: 20px auto;
+    transition: all 0.3s ease;
+}
+
+.stripe-payment-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-header h3 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: #32325d;
+}
+
+.secure-badge {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #6b7c93;
+    margin-top: 5px;
+}
+
+.lock-icon {
+    margin-right: 6px;
+}
+
+.payment-amount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e6ebf1;
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: #525f7f;
+}
+
+.amount-value {
+    font-weight: 600;
+    font-size: 18px;
+    color: #32325d;
+}
+
+.card-element-container {
+    margin-bottom: 20px;
+}
+
+.card-element-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6b7c93;
+}
+
+.card-element {
+    background-color: #f7fafc;
+    border: 1px solid #e6ebf1;
+    border-radius: 6px;
+    padding: 15px;
+    transition: box-shadow 0.3s, border 0.3s;
+}
+
+.card-element:focus {
+    box-shadow: 0 0 0 1px #6772e5;
+    border-color: #6772e5;
+}
+
+.card-element:hover {
+    border-color: #cfd7df;
+}
+
+.error-message {
+    color: #fa755a;
+    margin-bottom: 15px;
+    font-size: 13px;
+    background-color: rgba(250, 117, 90, 0.1);
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.payment-button {
+    background: linear-gradient(to right, #5469d4, #7795f8);
+    color: white;
+    border: 0;
+    padding: 12px 16px;
+    margin-top: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    box-shadow: 0 4px 5px rgba(50, 50, 93, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    height: 48px;
+}
+
+.payment-button:hover {
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.payment-button:active {
+    transform: translateY(1px);
+}
+
+.payment-button:disabled {
+    background: #e0e0e0;
+    color: #a0a0a0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.payment-button.loading {
+    background: #7795f8;
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    margin-right: 10px;
+    animation: spin 0.8s linear infinite;
+}
+
+.payment-info {
+    margin-top: 20px;
+    text-align: center;
+    color: #8898aa;
+    font-size: 13px;
+}
+
+.card-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.card-icon {
+    margin-right: 8px;
+}
+
+/* Success state */
+.payment-success {
+    text-align: center;
+    padding: 20px 0;
+    color: #32325d;
+}
+
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #0acf83;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 20px;
+}
+
+.payment-success h3 {
+    margin: 15px 0;
+    color: #32325d;
+}
+
+.payment-success p {
+    color: #6b7c93;
+    margin: 10px 0;
+}
+
+.transaction-id {
+    font-family: monospace;
+    background-color: #f7fafc;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 20px !important;
+    display: inline-block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .stripe-payment-container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .payment-button {
+        font-size: 14px;
+    }
+}

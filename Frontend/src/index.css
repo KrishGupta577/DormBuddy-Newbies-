@@ -1,124 +1,117 @@
 :root {
-  --primary-color: #4A90E2;  /* Vibrant Electric Blue */
-  --secondary-color: #7B3FC3;  /* Royal Purple */
-  --bg-color: #F1F5FF;  /* Mist White */
-  --secondary-bg-color: #E3E8FF;  /* Soft Lavender Blue */
-  --login-box-bg: #E0F2FF;  /* Light Blue */
-  --login-box-border: #4A90E2;  /* Sky Blue */
-  --text-color: #242B38;  /* Deep Gray */
-  --secondary-text-color: #575D73;  /* Subtle Cool Gray */
-  --button-color: #4A90E2;  /* Electric Blue */
-  --button-hover-color: #7B3FC3;  /* Royal Purple */
-  --box-shadow-color: rgba(74, 144, 226, 0.3);  /* Blue Glow */
-  --border-color: #5E35B1;  /* Medium Violet */
-  --error-color: #E63946;  /* Bold Red */
-  --error-bg-color: rgba(230, 57, 70, 0.15);  /* Soft Red Tint */
+  /* Background Colors */
+  --bg-color: #F9FAFB;
+  --secondary-bg-color: #FFFFFF;
+
+  /* Text Colors */
+  --text-color: #333333;
+  --secondary-text-color: #666666;
+
+  /* Button Colors */
+  --button-color: #007BFF; 
+  --hover-button-color: #0056b3; 
+
+  /* Border & Box Shadow */
+  --border-color: #E0E0E0;
+  --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --bg-color: #1E1E1E;
+  --secondary-bg-color: #2C2C2C;
+
+  --text-color: #E0E0E0;
+  --secondary-text-color: #B0B0B0;
+
+  --button-color: #007BFF;
+  --hover-button-color: #0056b3;
+
+  --border-color: #444444;
+  --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 html {
-    scroll-behavior: smooth;
-  }
-  
-  * {
-    padding: 0;
-    margin: 0;
-    color: var(--text-color);
-  }
-  
-  body {
-    width: 100vw;
-  }
-  
-  .loading-spinner {
-    width: 18px;
-    height: 18px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top-color: white;
-    animation: spin 0.8s linear infinite;
+  scroll-behavior: smooth;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  color: var(--text-color);
+}
+
+body {
+  width: 100vw;
+}
+
+.loading-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes containerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
 
-  @keyframes float {
-    0% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  @keyframes containerFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-  
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
   }
-  
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-30px);
-    }
-  
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  
-    50% {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
-  
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  @keyframes popupAnimation {
-    0% {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-  
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
   }
-  
-  @keyframes fill-progress {
-    from {
-      width: 0;
-    }
-  
-    to {
-      width: 100%;
-    }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-  
-    to {
-      transform: rotate(360deg);
-    }
+}
+
+@keyframes popupAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
   }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

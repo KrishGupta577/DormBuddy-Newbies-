@@ -1,0 +1,162 @@
+.expense-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+  }
+  
+  .expense-title {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 30px;
+  }
+  
+  .expense-section {
+    background-color: var(--secondary-bg-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .expense-section-title {
+    color: var(--button-color);
+    border-bottom: 2px solid var(--button-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .expense-subtitle {
+    color: var(--secondary-text-color);
+    margin-bottom: 10px;
+  }
+  
+  .expense-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .expense-input, .expense-select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    flex: 1;
+    min-width: 120px;
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+  }
+  
+  .expense-button {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .expense-button:hover {
+    background-color: var(--hover-button-color);
+  }
+  
+  .expense-roommates-list {
+    margin-top: 15px;
+  }
+  
+  .expense-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .expense-list-item {
+    background-color: var(--secondary-bg-color);
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .expense-message {
+    color: var(--secondary-text-color);
+    font-style: italic;
+  }
+  
+  .expense-table-container {
+    overflow-x: auto;
+  }
+  
+  .expense-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .expense-table-header {
+    background-color: var(--button-color);
+    color: white;
+    text-align: left;
+    padding: 10px;
+  }
+  
+  .expense-table-row:nth-child(even) {
+    background-color: var(--bg-color);
+  }
+  
+  .expense-table-cell {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .expense-delete-button {
+    background-color: var(--delete-button-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .expense-delete-button:hover {
+    background-color: var(--delete-hover-color);
+  }
+  
+  .expense-balance-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .expense-balance {
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--secondary-bg-color);
+  }
+  
+  .expense-roommate-name {
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  
+  .expense-amount {
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .expense-form {
+      flex-direction: column;
+    }
+    
+    .expense-input, .expense-select, .expense-button {
+      width: 100%;
+    }
+  }
+  

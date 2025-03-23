@@ -2,10 +2,10 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Cross, LogIn, UserPlus, X } from 'lucide-react';
 import "./LoginPage.css";
-import { StoreContext } from '../../../context/StoreContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { StoreContext } from '../../../../context/StoreContext';
 
 function LoginPage({ setShowLogin }) {
   const { url } = useContext(StoreContext)
@@ -29,7 +29,7 @@ function LoginPage({ setShowLogin }) {
         if (response.data.form) {
           navigate('/detail-form')
         } else {
-          navigate('/')
+          navigate('/dashboard')
         }
         reset()
       }

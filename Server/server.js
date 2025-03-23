@@ -7,7 +7,6 @@ import { connectDB } from "./src/config/db.js"
 import userRouter from "./src/routers/userRoutes.js"
 import dormRoomRouter from "./src/routers/dormRoomRouter.js"
 
-
 const app = express()
 const PORT = process.env.PORT
 

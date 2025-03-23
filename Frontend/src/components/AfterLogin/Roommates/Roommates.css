@@ -1,0 +1,328 @@
+/* Roommates.css */
+.roommate-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+  }
+  
+  .roommate-title {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    font-size: 28px;
+  }
+  
+  .roommate-section {
+    background-color: var(--secondary-bg-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .roommate-section-title {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  
+  .roommate-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+  
+  .roommate-toggle-button {
+    background-color: var(--secondary-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .roommate-toggle-button:hover {
+    background-color: var(--secondary-hover-color);
+  }
+  
+  .roommate-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .roommate-form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .roommate-form-row {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .roommate-label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .roommate-input,
+  .roommate-select,
+  .roommate-textarea {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+  }
+  
+  .roommate-textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .roommate-checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 22px;
+  }
+  
+  .roommate-checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .roommate-checkbox {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+  }
+  
+  .roommate-form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .roommate-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.2s;
+  }
+  
+  .roommate-button:hover {
+    opacity: 0.9;
+  }
+  
+  .roommate-button-primary {
+    background-color: var(--button-color);
+    color: var(--bg-color);
+  }
+  
+  .roommate-button-secondary {
+    background-color: var(--button-color);
+    color: var(--bg-color);
+  }
+  
+  .roommate-button-danger {
+    background-color: var(--danger-color);
+    color: var(--button-text-color);
+  }
+  
+  .roommate-button-muted {
+    background-color: var(--muted-color);
+    color: var(--button-text-color);
+  }
+  
+  .roommate-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+  }
+  
+  .roommate-card {
+    background-color: var(--secondary-bg-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .roommate-card-header {
+    padding: 15px;
+    background-color: var(--highlight-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .roommate-name {
+    margin: 0;
+    font-size: 18px;
+    color: var(--text-color);
+  }
+  
+  .roommate-rent-status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--button-text-color);
+  }
+  
+  .roommate-status-current {
+    background-color: var(--warning-color);
+  }
+  
+  .roommate-status-late {
+    background-color: var(--danger-color);
+  }
+  
+  .roommate-status-paid {
+    background-color: var(--success-color);
+  }
+  
+  .roommate-card-body {
+    padding: 15px;
+    flex-grow: 1;
+  }
+  
+  .roommate-info-group {
+    margin-bottom: 12px;
+  }
+  
+  .roommate-info {
+    margin: 5px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .roommate-notes {
+    margin-top: 15px;
+    background-color: var(--secondary-bg-color);
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .roommate-notes-title {
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    font-size: 14px;
+  }
+  
+  .roommate-notes-content {
+    margin: 0;
+    font-size: 14px;
+    white-space: pre-line;
+    color: var(--text-color);
+  }
+  
+  .roommate-card-actions {
+    padding: 10px 15px;
+    background-color: var(--secondary-bg-color);
+    border-top: 1px solid var(--border-color);
+  }
+  
+  .roommate-rent-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  
+  .roommate-action-label {
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .roommate-status-button {
+    background-color: var(--muted-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .roommate-status-button:hover {
+    background-color: var(--muted-hover-color);
+  }
+  
+  .roommate-status-active {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    border-color: var(--primary-color);
+  }
+  
+  .roommate-card-footer {
+    padding: 15px;
+    background-color: var(--secondary-bg-color);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .roommate-empty-message {
+    text-align: center;
+    color: var(--muted-color);
+    font-style: italic;
+    padding: 20px 0;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .roommate-form-row {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .roommate-list {
+      grid-template-columns: 1fr;
+    }
+  
+    .roommate-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  
+    .roommate-card-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+  
+    .roommate-card-footer {
+      flex-direction: column;
+    }
+  
+    .roommate-button {
+      width: 100%;
+    }
+  }
+  

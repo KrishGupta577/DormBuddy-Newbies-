@@ -1,0 +1,126 @@
+/* HowItWorks.css */
+.landing-page-how-it-works {
+    padding: 5rem 0;
+    background-color: #f9fafc;
+  }
+  
+  .landing-page-how-it-works h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2d3748;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  
+  .landing-page-how-it-works h2:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #4a6cf7;
+    border-radius: 2px;
+  }
+  
+  .landing-page-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* Connect steps with a line */
+  .landing-page-steps:before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 15%;
+    right: 15%;
+    height: 3px;
+    background-color: #e2e8f0;
+    z-index: 1;
+  }
+  
+  .landing-page-step {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 22%;
+  }
+  
+  .landing-page-step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #4a6cf7;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(74, 108, 247, 0.3);
+  }
+  
+  .landing-page-step-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .landing-page-step-content h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 1rem;
+  }
+  
+  .landing-page-step-icon {
+    color: #4a6cf7;
+    margin-bottom: 1rem;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 992px) {
+    .landing-page-steps {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    
+    .landing-page-steps:before {
+      display: none;
+    }
+    
+    .landing-page-step {
+      width: 45%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .landing-page-how-it-works h2 {
+      font-size: 2rem;
+    }
+    
+    .landing-page-steps {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .landing-page-step {
+      width: 100%;
+      max-width: 280px;
+      margin-bottom: 2rem;
+    }
+    
+    .landing-page-step:last-child {
+      margin-bottom: 0;
+    }
+  }

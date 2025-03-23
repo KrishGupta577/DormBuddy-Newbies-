@@ -1,0 +1,123 @@
+/* setting-styles.css */
+
+.setting-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .setting-title {
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--button-color);
+    padding-bottom: 10px;
+  }
+  
+  .setting-section {
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: var(--secondary-bg-color);
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .setting-section-title {
+    color: var(--button-color);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .setting-form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .setting-label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--secondary-text-color);
+  }
+  
+  .setting-input,
+  .setting-select {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+  }
+  
+  .setting-input:focus,
+  .setting-select:focus {
+    border-color: var(--button-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  }
+  
+  .setting-checkbox-group {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .setting-checkbox {
+    margin-right: 10px;
+  }
+  
+  .setting-checkbox-label {
+    cursor: pointer;
+    color: var(--text-color);
+  }
+  
+  .setting-button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .setting-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+  }
+  
+  .setting-save-button {
+    background-color: var(--button-color);
+    color: var(--secondary-bg-color);
+  }
+  
+  .setting-save-button:hover {
+    background-color: var(--hover-button-color);
+  }
+  
+  .setting-cancel-button {
+    background-color: var(--border-color);
+    color: var(--secondary-text-color);
+  }
+  
+  .setting-cancel-button:hover {
+    background-color: #d1d1d1;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .setting-button-group {
+      flex-direction: column;
+    }
+  
+    .setting-button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  

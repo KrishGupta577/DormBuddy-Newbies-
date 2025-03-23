@@ -1,0 +1,109 @@
+/* Features.css */
+.landing-page-features {
+    padding: 5rem 0;
+    background-color: #fff;
+  }
+  
+  .landing-page-features h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2d3748;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  
+  .landing-page-features h2:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #4a6cf7;
+    border-radius: 2px;
+  }
+  
+  .landing-page-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .landing-page-feature-card {
+    background-color: #f8fafc;
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .landing-page-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .landing-page-feature-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background-color: #4a6cf7;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  
+  .landing-page-feature-icon {
+    color: #4a6cf7;
+    margin-bottom: 1.5rem;
+  }
+  
+  .landing-page-feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #2d3748;
+    font-weight: 600;
+  }
+  
+  .landing-page-feature-card p {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  .landing-page-feature-link {
+    color: #4a6cf7;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+  
+  .landing-page-feature-link:hover {
+    color: #3a57d7;
+    transform: translateX(5px);
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 992px) {
+    .landing-page-features-grid {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .landing-page-features h2 {
+      font-size: 2rem;
+    }
+    
+    .landing-page-feature-card {
+      padding: 1.5rem;
+    }
+  }

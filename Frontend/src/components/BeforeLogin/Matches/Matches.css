@@ -1,0 +1,381 @@
+/* Matches Component Styles */
+.matches-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .matches-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .matches-header h2 {
+    color: #333;
+    margin: 0;
+    font-size: 28px;
+  }
+  
+  .matches-search-input {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 280px;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .matches-search-input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 2px 6px rgba(74, 144, 226, 0.2);
+  }
+  
+  /* Grid layout for matches */
+  .matches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  
+  /* Match card styling */
+  .matches-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eaeaea;
+  }
+  
+  .matches-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+  
+  .matches-card-header {
+    padding: 16px 20px;
+    background: linear-gradient(to right, #f7f9fc, #edf1f7);
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .matches-card-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #2c3e50;
+  }
+  
+  .matches-badge {
+    background-color: #4a90e2;
+    color: white;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-weight: 500;
+  }
+  
+  .matches-card-body {
+    padding: 20px;
+  }
+  
+  .matches-info-group {
+    margin-bottom: 20px;
+  }
+  
+  .matches-info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .matches-info-label {
+    color: #7f8c8d;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .matches-info-value {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 14px;
+  }
+  
+  .matches-preferences {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 15px;
+  }
+  
+  .matches-preferences h4 {
+    font-size: 16px;
+    margin: 0 0 12px 0;
+    color: #34495e;
+  }
+  
+  .matches-preferences-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .matches-preference-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .matches-preference-icon {
+    font-size: 16px;
+  }
+  
+  .matches-card-footer {
+    padding: 16px 20px;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  
+  .matches-contact-btn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 500;
+    cursor: pointer;
+    flex: 1;
+    transition: background-color 0.2s ease;
+  }
+  
+  .matches-contact-btn:hover {
+    background-color: #3a7bc8;
+  }
+  
+  .matches-save-btn {
+    background-color: white;
+    color: #4a90e2;
+    border: 1px solid #4a90e2;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 500;
+    cursor: pointer;
+    flex: 1;
+    transition: all 0.2s ease;
+  }
+  
+  .matches-save-btn:hover {
+    background-color: #f0f7ff;
+  }
+  
+  /* Empty state styling */
+  .matches-empty {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f9fafb;
+    border-radius: 12px;
+    border: 1px dashed #ddd;
+  }
+  
+  .matches-empty-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+  
+  .matches-empty h3 {
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+  }
+  
+  .matches-empty p {
+    color: #7f8c8d;
+    margin: 0;
+  }
+  
+  /* Loading state */
+  .matches-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+  }
+  
+  .matches-loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #4a90e2;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 16px;
+  }
+  
+  .payment-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Popup Container */
+  .payment-popup {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 450px;
+    max-width: 90%;
+    position: relative;
+    overflow: hidden;
+    animation: popIn 0.3s ease-out forwards;
+  }
+  
+  /* Close Button */
+  .payment-popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    z-index: 2;
+    transition: color 0.2s;
+  }
+  
+  .payment-popup-close:hover {
+    color: #333;
+  }
+  
+  /* Popup Header */
+  .payment-popup-header {
+    text-align: center;
+    padding: 25px 20px 15px;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .payment-popup-emoji {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+  
+  .payment-popup-header h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  
+  /* Popup Content */
+  .payment-initial-content {
+    padding: 0 0 25px;
+  }
+  
+  .payment-popup-message {
+    padding: 20px 25px;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  .payment-popup-message p {
+    margin-top: 0;
+    font-size: 15px;
+  }
+  
+  /* Benefits Section */
+  .payment-benefits {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+  }
+  
+  .payment-benefit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .payment-benefit-icon {
+    font-size: 28px;
+    background-color: #f0f4ff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+  
+  /* Payment Button */
+  .payment-button {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .payment-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-button:active {
+    transform: translateY(0);
+  }
+
+.matches-card {
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.matches-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .matches-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .matches-search-input {
+      width: 100%;
+    }
+    
+    .matches-grid {
+      grid-template-columns: 1fr;
+    }
+  }
